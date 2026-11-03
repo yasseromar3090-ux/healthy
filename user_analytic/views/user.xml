@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-<!--   
-     <record id="see_my_sale_orders_only" model="res.groups">
-           <field name="name">Sale orders-Analytic Account</field>
+
+        <record id="see_my_sale_orders_only" model="res.groups">
+            <field name="name">Sale orders-Analytic Account</field>
         </record>
 
         <record id="see_my_sale_orders_only_rule" model="ir.rule">
@@ -47,7 +47,7 @@
 
 
             </field>
- -->
+        </record>
         <record id="view_partner_form" model="ir.ui.view">
             <field name="name">res.partner</field>
             <field name="model">res.partner</field>

@@ -34,7 +34,7 @@ delivery status
     "website" : "https://www.browseinfo.in",
     "price": 000,
     "currency": 'EUR',
-    "depends" : ['base','sale_management','stock'],
+    "depends" : ['base','sale_management','stock','ht_custom'],
     "data": [
         'views/main_delivery_invoice.xml'
     ],

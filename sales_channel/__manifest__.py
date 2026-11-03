@@ -10,8 +10,11 @@
 
      """,
     'author':'Odoo Ninja',
-    'depends':['base','sale','account'],
-    'data':['views/sale_view.xml'
+    'depends':['base','sale','account','ht_custom'],
+    'data':[
+        'security/ir.model.access.csv',
+        'views/sale_view.xml'
+
 
             ],
     'email':'odooninja@gmail.com',

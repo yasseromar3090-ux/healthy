@@ -9,9 +9,18 @@
 
                 <xpath expr="//field[@name='partner_id']" position="after">
                     <label for="Sales_Channel" string="Sales Channel"/>
-                    <field name="Sales_Channel" class="oe_inline" widget="many2one_tags"/>
+                    <field name="Sales_Channel_id" class="oe_inline"  options='{"no_open": True, "no_create": True}'/>
                 </xpath>
             </field>
         </record>
+
+        <record id="sales_channel_action" model="ir.actions.act_window">
+            <field name="name">Sales Types</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.channels</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="sales_channel_action_menu" name="Sales Types" parent="sale.menu_sale_config" action="sales_channel_action" sequence="100"/>
     </data>
         </openerp>

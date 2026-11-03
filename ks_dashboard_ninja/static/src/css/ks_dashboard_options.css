@@ -27,9 +27,6 @@ i.ks-options-plus {
 .apply-dashboard-date-filter{
     margin-left: 10px;
 }
-.ks_btn_middle_child{
-    margin-right: 10px;
-}
 
 .clear-dashboard-date-filter{
     margin-left:5px;
@@ -74,13 +71,3 @@ i.ks-options-plus {
     margin-left: 15px;
     margin-right: 15px;
 }
-
-.ks_event_offer_list {
-    pointer-events: none;
-    color: #8080805e !important;
-}
-
-.ks_event_offer_list:focus {
-    box-shadow: none;
-}
-

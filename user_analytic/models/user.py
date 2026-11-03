@@ -7,12 +7,12 @@ from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 
 
-#class User(models.Model):
- #   _inherit = "res.users"
-  #  analytic_account_id = fields.Many2one(
-   #     string='Analytic Account',
-    #    comodel_name='account.analytic.account',
-   # )
+class User(models.Model):
+    _inherit = "res.users"
+    analytic_account_id = fields.Many2one(
+        string='Analytic Account',
+        comodel_name='account.analytic.account',
+    )
 class Partner(models.Model):
     _inherit = "res.partner"
 
@@ -38,12 +38,12 @@ class Partner(models.Model):
                 raise ValidationError("Mobile must be in the format: +20xxxxxxxxx.")
 
 
-#class Sale(models.Model):
- #   _inherit = "sale.order"
-  #  analytic_account_id = fields.Many2one('account.analytic.account', 'Analytic Account', readonly=False,
-   #                                       states={'draft': [('readonly', False)], 'sent': [('readonly', False)]},
-    #                                      help="The analytic account related to a sales order.", copy=False,
-     #                                     oldname='project_id',related='user_id.analytic_account_id',store=True)
+class Sale(models.Model):
+    _inherit = "sale.order"
+    analytic_account_id = fields.Many2one('account.analytic.account', 'Analytic Account', readonly=False,
+                                          states={'draft': [('readonly', False)], 'sent': [('readonly', False)]},
+                                          help="The analytic account related to a sales order.", copy=False,
+                                          oldname='project_id',related='user_id.analytic_account_id',store=True)
 
 
 class SaleOrderReport(models.AbstractModel):
@@ -53,22 +53,21 @@ class SaleOrderReport(models.AbstractModel):
     @api.model
     def _get_report_values(self, docids, data=None):
         docs = self.env['sale.order'].browse(docids)
-        total = 0
-        grouped_products_lst = []
-        product_quantities = {}
-        product_quantities2 = []
+        total=0
+        grouped_products_lst=[]
         for doc in docs:
+            product_quantities = {}
             for line in doc.order_line:
-                if line.product_id.id not in grouped_products_lst:
-                    grouped_products_lst.append(line.product_id.id)
-                    product_quantities[line.product_id] = line.product_uom_qty
-                    total += line.product_uom_qty
-                else:
-                    product_quantities[line.product_id] += line.product_uom_qty
-                    total += line.product_uom_qty
+                if line.product_id not in product_quantities:
+                    product_quantities[line.product_id] = 0
+                product_quantities[line.product_id] += line.product_uom_qty
 
-        for product, qty in product_quantities.items():
-            product_quantities2.append({'product_id': product.name, 'quantity': qty})
+            # Create a list of grouped products with quantities
+            for product, qty in product_quantities.items():
+                total+=qty
+                grouped_products_lst.append({'product_id': product.name, 'quantity': qty} )
+        print("grouped_products_lst",docs[0])
+
 
         return {
             'doc_ids': docids,
@@ -78,42 +77,8 @@ class SaleOrderReport(models.AbstractModel):
             'user_id': docs[0].user_id.name,
             'date_order': docs[0].date_order.strftime('%A'),
             'date_order2': docs[0].date_order.strftime('%d/%m/%Y'),
-            'product_quantities': product_quantities2,
+            'grouped_products_lst':grouped_products_lst,
         }
-class SaleOrderReport2(models.AbstractModel):
-    _name = 'report.user_analytic.report_sales_order_template2'
-    _description = 'Sales Order Report'
-    @api.model
-    def _get_report_values(self, docids, data=None):
-        docs = self.env['sale.order'].browse(docids)
-        total = 0
-        grouped_products_lst = []
-        product_quantities = {}
-        product_quantities2 = []
-        for doc in docs:
-            for line in doc.order_line:
-                if line.product_id.id not in grouped_products_lst:
-                    grouped_products_lst.append(line.product_id.id)
-                    product_quantities[line.product_id] = line.product_uom_qty
-                    total += line.product_uom_qty
-                else:
-                    product_quantities[line.product_id] += line.product_uom_qty
-                    total += line.product_uom_qty
-        for product, qty in product_quantities.items():
-            product_quantities2.append({'product_id': product.name, 'quantity': qty})
-
-        return {
-            'doc_ids': docids,
-            'doc_model': 'sale.order',
-            'total': total,
-            'docs': docs,
-            'user_id': docs[0].user_id.name,
-            'date_order': docs[0].date_order.strftime('%A'),
-            'date_order2': docs[0].date_order.strftime('%d/%m/%Y'),
-            'product_quantities': product_quantities2,
-        }
-
-
 class StockReport(models.AbstractModel):
     _name = 'report.user_analytic.report_stock_order_template'
 
@@ -122,23 +87,18 @@ class StockReport(models.AbstractModel):
         docs = self.env['stock.picking'].browse(docids)
         total=0
         grouped_products_lst=[]
-        product_quantities = {}
-        product_quantities2 = []
         for doc in docs:
+            product_quantities = {}
             for line in doc.move_ids_without_package:
-                if line.product_id.id not in grouped_products_lst:
-                    grouped_products_lst.append(line.product_id.id)
-                    product_quantities[line.product_id]=line.quantity_done
-                    total += line.quantity_done
-                else:
-                    product_quantities[line.product_id]=line.quantity_done
-                    total += line.quantity_done
+                if line.product_id not in product_quantities:
+                    product_quantities[line.product_id] = 0
+                product_quantities[line.product_id] += line.quantity_done
 
-        for product, qty in product_quantities.items():
-            product_quantities2.append({'product_id': product.name, 'quantity': qty})
-
-
-
+            # Create a list of grouped products with quantities
+            for product, qty in product_quantities.items():
+                total+=qty
+                grouped_products_lst.append({'product_id': product.name, 'quantity': qty} )
+        print("grouped_products_lst",docs[0])
 
 
         return {
@@ -149,38 +109,5 @@ class StockReport(models.AbstractModel):
             'user_id': docs[0].x_user_id.name,
             'date_order': docs[0].scheduled_date.strftime('%A'),
             'date_order2': docs[0].scheduled_date.strftime('%d/%m/%Y'),
-            'product_quantities':product_quantities2,
-        }
-class StockReport2(models.AbstractModel):
-    _name = 'report.user_analytic.report_stock_order_template2'
-
-    @api.model
-    def _get_report_values(self, docids, data=None):
-        docs = self.env['stock.picking'].browse(docids)
-        total = 0
-        grouped_products_lst = []
-        product_quantities = {}
-        product_quantities2 = []
-        for doc in docs:
-            for line in doc.move_ids_without_package:
-                if line.product_id.id not in grouped_products_lst:
-                    grouped_products_lst.append(line.product_id.id)
-                    product_quantities[line.product_id] = line.quantity_done
-                    total += line.quantity_done
-                else:
-                    product_quantities[line.product_id] = line.quantity_done
-                    total += line.quantity_done
-
-        for product, qty in product_quantities.items():
-            product_quantities2.append({'product_id': product.name, 'quantity': qty})
-
-        return {
-            'doc_ids': docids,
-            'doc_model': 'stock.picking',
-            'total': total,
-            'docs': docs,
-            'user_id': docs[0].x_user_id.name,
-            'date_order': docs[0].scheduled_date.strftime('%A'),
-            'date_order2': docs[0].scheduled_date.strftime('%d/%m/%Y'),
-            'product_quantities': product_quantities2,
+            'grouped_products_lst':grouped_products_lst,
         }

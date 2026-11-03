@@ -2,7 +2,9 @@
 
 <odoo>
 	<data>
-
+<record id="is_delayed_group" model="res.groups">
+		    <field name="name">is_Delayed</field>
+		</record>
 		<record id="view_inherit_sale_order_filter" model="ir.ui.view">
             <field name="name">view.inherit.sale.order.search</field>
             <field name="model">sale.order</field>
@@ -30,7 +32,7 @@
 	       			<!--field name="is_partially_delivery"/-->
 	       			<field name="is_fully_delivery"/>
 	       			<field name="is_repeated"/>
-	       			<field name="is_Delayed"/>
+	       			<field name="is_Delayed" groups="bi_sale_delivery_invoice_status.is_delayed_group"/>
 					<field name="is_confirmed"/>
 					<field name="is_replaced"/>
 			   	</xpath>

@@ -14,7 +14,7 @@ from odoo.exceptions import UserError
 from odoo.tools import pycompat
 
 
-class KsChartExport(http.Controller):
+class KsChartExport(ExportFormat, http.Controller):
 
     def base(self, data, token):
         params = json.loads(data)
@@ -35,7 +35,7 @@ class KsChartExport(http.Controller):
             cookies={'fileToken': token})
 
 
-class KsChartExcelExport(http.Controller):
+class KsChartExcelExport(KsChartExport, http.Controller):
 
     # Excel needs raw data to correctly handle numbers and date values
     raw_data = True
@@ -102,7 +102,7 @@ class KsChartExcelExport(http.Controller):
         return data
 
 
-class KsChartCsvExport(http.Controller):
+class KsChartCsvExport(KsChartExport, http.Controller):
 
     @http.route('/ks_dashboard_ninja/export/chart_csv', type='http', auth="user")
     @serialize_exception
