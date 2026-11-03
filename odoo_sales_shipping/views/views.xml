@@ -1,0 +1,68 @@
+<odoo>
+  <data>
+           <record id="shipping_saleoder" model="ir.ui.view">
+            <field name="name">shippingsales</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+<xpath expr="//field[@name='team_id']" position="replace">
+    <field name="team_id"/>
+</xpath>
+                  <xpath expr="//field[@name='amount_total']" position="after">
+                      <field name="discount_x"/>
+
+                    <field name="shipping_amount" />
+                    <field name="shipping_amount_total"/>
+
+
+                </xpath>
+
+
+
+            </field>
+        </record>
+
+      <record id="shipping_users" model="ir.ui.view">
+            <field name="name">usersalesteam</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+
+
+                  <xpath expr="//field[@name='lang']" position="after">
+                    <field name="sales_team" />
+
+                </xpath>
+
+
+
+            </field>
+        </record>
+
+ <record id="res_partner_view_inhert" model="ir.ui.view">
+            <field name="name">view.res.partner.form.phone.inherited</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+
+             <xpath expr="//field[@name='mobile']" position="attributes">
+                    <attribute name="required">1</attribute>
+             </xpath></field></record>
+
+
+
+    <record id="sale_discount_amount" model="ir.ui.view">
+        <field name="name">sale.order.discount.line</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+
+             <xpath expr="//tree/field[@name='price_unit']" position="after">
+                 <field name="discount"/>
+                 <field name="discount_x"/>
+<!--                 <field name="dis"/>-->
+
+             </xpath>
+        </field></record>
+  </data>
+</odoo>

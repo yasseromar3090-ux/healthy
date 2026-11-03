@@ -1,0 +1,123 @@
+<odoo>
+    <data>
+        <!-- QWeb Reports -->
+        <!-- NAME & FILE_NAME should be the same -->
+        <report
+                id="sale_report_id"
+                model="sale.order"
+                report_type="qweb-pdf"
+                string="Healthy Report"
+                name="healthy_sales_report.temp_id"
+                file="healthy_sales_report.temp_id"
+        />
+
+        <template id="temp_id">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+
+                    <t t-call="web.external_layout">
+                        <!-- <t t-call="report.external_layout"> -->
+                        <div class="page">
+                            <div style="font-size:30px;">
+                                <p style="font-size:15pt;text-align:center;color:black;font-weight: bold;">
+                                    فاتورة
+
+                                </p>
+                                <p style="font-size:15pt;text-align:right;color:black">
+                                    <t  t-esc="doc.date_order"/>:تحريرا في
+                                </p>
+                                <p style="font-size:15pt;text-align:right;color:black">
+                                <t  t-esc="doc.partner_id.name"/>     : المطلوب من
+                                </p>
+                                <p style="font-size:15pt;text-align:right;color:black">
+                                     <t  t-esc="doc.partner_id.street"/> : العنوان
+                                </p>
+                                <p style="font-size:15pt;text-align:right;color:black">
+                                    <t  t-esc="doc.partner_id.phone"/>: رقم التليفون
+                                </p>
+                            </div>
+                            <br/>
+                            <style type="text/css">
+                                .tg {border-collapse:collapse;border-spacing:0;}
+                                .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial,
+                                sans-serif;font-size:14px;
+                                overflow:hidden;padding:10px 5px;word-break:normal;}
+                                .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial,
+                                sans-serif;font-size:14px;
+                                font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+                                .tg .tg-7btt{border-color:inherit;font-weight:bold;text-align:center;vertical-align:top}
+                                .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+                                .tg .tg-fymr{border-color:inherit;font-weight:bold;text-align:left;vertical-align:top}
+                            </style>
+                            <table class="tg" style="undefined;table-layout: fixed; width: 850px">
+                                <colgroup>
+                                    <col style="width: 304px"/>
+                                    <col style="width: 36px"/>
+                                    <col style="width: 41px"/>
+                                    <col style="width: 48px"/>
+                                    <col style="width: 41px"/>
+                                    <col style="width: 48px"/>
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th class="tg-7btt">البيان</th>
+                                        <th class="tg-7btt">عدد
+                                            <br/>
+                                        </th>
+                                        <th class="tg-7btt" colspan="2">سعر
+                                            <br/>
+                                        </th>
+                                        <th class="tg-7btt" colspan="2">الأجمالي</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="tg-0pky"></td>
+                                        <td class="tg-0pky"></td>
+                                        <td class="tg-fymr">جنية</td>
+                                        <td class="tg-fymr">قرش</td>
+                                        <td class="tg-fymr">جنية</td>
+                                        <td class="tg-fymr">قرش</td>
+                                    </tr>
+                                    <tr t-foreach="doc.order_line" t-as="line">
+                                        <td class="tg-0pky" style="text-align:center"><t  t-esc="line.product_id.name"/></td>
+                                        <td class="tg-0pky" style="text-align:center"><t  t-esc="line.product_uom_qty"/></td>
+                                        <td class="tg-0pky" style="text-align:center"><t  t-esc="int(line.price_unit)"/></td>
+                                        <td class="tg-0pky" style="text-align:center"><t  t-esc="round((line.price_unit - int(line.price_unit)),2)*100"/></td>
+                                        <td class="tg-0pky" style="text-align:center"><t  t-esc="int(line.price_subtotal)"/></td>
+                                        <td class="tg-0pky" style="text-align:center"><t  t-esc="round((line.price_subtotal - int(line.price_subtotal)),2)*100"/></td>
+
+                                    </tr>
+<!--                                    <tr>-->
+<!--                                        <td class="tg-0pky"></td>-->
+<!--                                        <td class="tg-0pky"></td>-->
+<!--                                        <td class="tg-0pky"></td>-->
+<!--                                        <td class="tg-0pky"></td>-->
+<!--                                        <td class="tg-0pky"><t t-esc="sum(line.mapped('price_subtotal'))"/></td>-->
+<!--                                        <td class="tg-0pky"></td>-->
+<!--                                    </tr>-->
+                                </tbody>
+                            </table>
+                            <br/>
+                            <br/>
+                             <div style="font-size:30px;">
+                                <p style="font-size:15pt;text-align:center;color:black;font-weight: bold;">
+                                   01270270179 - 01010890046 - 01143000383
+
+                                </p>
+                                <p style="font-size:15pt;text-align:center;color:red;font-weight: bold;">
+                                    للتواصل مع خدمة العملاء ت : 01151070653
+                                </p>
+                                <p style="font-size:15pt;text-align:center;color:black;font-weight: bold;">
+                                    سيتم سياسة الاستبدال والاسترجاع في خلال 14 يوم من تاريخ الشراء + الفاتورة
+                                </p>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+
+    </data>
+</odoo>

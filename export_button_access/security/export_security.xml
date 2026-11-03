@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Access Category -->
+        <record id="module_category_export_access" model="ir.module.category">
+            <field name="name">Export Access</field>
+            <field name="description">Access rights for export functionality</field>
+            <field name="sequence">50</field>
+        </record>
+
+        <!-- Export Access Group -->
+        <record id="group_export_data" model="res.groups">
+            <field name="name">Export Data</field>
+            <field name="category_id" ref="module_category_export_access"/>
+            <field name="comment">Users in this group can export data from list views</field>
+        </record>
+
+    </data>
+</odoo>

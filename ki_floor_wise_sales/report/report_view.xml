@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="pos_floor_wise_summary_tmpl">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="row mt64 mb32">
+                            <div class="col-md-12">
+                                <h5 class="text-center">
+                                    Floor Wise Sales Summary :
+                                    <strong t-field="o.start_date" />
+                                    -
+                                    <strong t-field="o.end_date" />
+                                </h5>
+                            </div>
+                        </div>
+
+
+                        <div class="row mt16">
+                            <div class="col-md-12">
+                            <t t-foreach="floor_categ_wise_dict" t-as="floor">
+                                <t t-set="amount_untaxed" t-value="0.0"/>
+                                <t t-set="amount_taxed" t-value="0.0"/>
+                                <t t-set="amount_total" t-value="0.0"/>
+                                <h5>
+                                    <strong t-field="floor.name"/>
+                                </h5>
+                                <table class="table table-sm table-bordered">
+                                    <thead  class="thead-dark">
+                                        <th>#</th>
+                                        <th>Product</th>
+                                        <th class="text-right">Quantity</th>
+                                        <th class="text-right">Untaxed Amount</th>
+                                        <th class="text-right">Tax Amount</th>
+                                        <th class="text-right">Total Amount</th>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="floor_categ_wise_dict[floor]" t-as="categ">
+                                            <tr>
+                                                <td class="text-left">
+                                                    <span t-esc="categ_index+1"/>
+                                                </td>
+                                                <td class="text-left">
+                                                    <span t-if="categ" t-field="categ.display_name" />
+                                                    <span t-if="not categ">Undefined</span>
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-esc="floor_categ_wise_dict[floor][categ]['qty']" />
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-esc="floor_categ_wise_dict[floor][categ]['amount_untaxed']" />
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-esc="floor_categ_wise_dict[floor][categ]['amount_taxed']" />
+                                                </td>
+                                                <td class="text-right">
+                                                    <span t-esc="floor_categ_wise_dict[floor][categ]['amount_total']" />
+                                                </td>
+                                                <t t-set="amount_untaxed" t-value="amount_untaxed + floor_categ_wise_dict[floor][categ]['amount_untaxed']"/>
+                                                <t t-set="amount_taxed" t-value="amount_taxed + floor_categ_wise_dict[floor][categ]['amount_taxed']"/>
+                                                <t t-set="amount_total" t-value="amount_total + floor_categ_wise_dict[floor][categ]['amount_total']"/>
+                                            </tr>
+                                        </t>
+                                        <tr>
+                                            <td class="text-left" colspan="3">
+                                                <strong >TOTAL</strong>
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-esc="amount_untaxed" />
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-esc="amount_taxed" />
+                                            </td>
+                                            <td class="text-right">
+                                                <span t-esc="amount_total" />
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </t>
+                        </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+    
+        <report 
+            id="action_pos_floor_wise_summary"
+            model="monthly.task.report.wizard"
+            string="Floor wise summary"
+            report_type="qweb-pdf"
+            name="ki_floor_wise_sales.pos_floor_wise_summary_tmpl"
+            file="ki_floor_wise_sales.pos_floor_wise_summary_tmpl" 
+            menu="False" 
+            />
+
+</odoo>

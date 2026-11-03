@@ -1,0 +1,10 @@
+<odoo>
+    <data>
+        <template id="gst_report_phone" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//div[@t-field='doc.partner_id']" position="after">
+           <div><span t-field="doc.partner_id.mobile"/></div>
+        </xpath>
+    </template>
+
+    </data>
+</odoo>

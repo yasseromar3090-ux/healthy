@@ -1,0 +1,67 @@
+<odoo>
+  <data>
+
+    <record id="sale.sale_order_view_search_inherit_quotation" model="ir.ui.view">
+        <field name="name">sale.order</field>
+        <field name="model">sale.order</field>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='my_sale_orders_filter']" position="replace">
+                    <separator/>
+                    <filter string="My Quotations" name="my_quotation" domain="[('user_id', '=', uid)]"/>
+                    <separator/>
+                    <filter string="Quotations" name="draft" domain="[('state','in',('draft', 'sent'))]"/>
+                    <filter string="Sales Orders" name="sales" domain="[('state','in',('sale','done'))]"/>
+                    <separator/>
+                    <filter string="Order Date" name="filter_order_date" date="date_order"/>
+                     <filter string="المندوب" name ="user_id"/>
+                      <filter string="المنطقة" name="x_street_city"/>
+                       <filter string="العنوان" name="x_street"/>
+                </xpath>
+
+
+        </field>
+    </record>
+    <record id="view_quotation_tree_with_onboarding" model="ir.ui.view">
+        <field name="name">sale.order</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree_with_onboarding"/>
+        <field name="arch" type="xml">
+           <xpath expr="//tree/field[@name='amount_total']" position="before">
+                <!--field string="المندوب" name ="user_id"/-->
+                <field string="م.كول سنتر" name="create_uid"/>
+                <field string="المحافظة" name="x_city"/>
+                      <field string="المنطقة" name="x_street_city"/>
+                      <field string="العنوان" name="x_street"/>
+
+            </xpath>
+
+
+        </field>
+    </record>
+
+       <record id="stock.vpicktree" model="ir.ui.view">
+            <field name="name">stock.picking.tree</field>
+            <field name="model">stock.picking</field>
+            <field name="arch" type="xml">
+                <tree decoration-info="state == 'draft'" decoration-muted="state == 'cancel'" decoration-danger="state not in ('cancel', 'done') and scheduled_date &lt; current_date" string="Picking list">
+                    <field name="name"/>
+                    <field name="location_dest_id" groups="stock.group_stock_multi_locations"/>
+                    <field name="partner_id"/>
+                     <field name="x_street_2"/>
+                      <field name="x_user_id"/>
+                    <field name="date" invisible="1"/>
+                    <field name="scheduled_date"/>
+                    <field name="origin"/>
+                    <field name="group_id" invisible="1"/>
+                    <field name="backorder_id"/>
+                    <field name="state"/>
+                    <field name="priority" invisible="1"/>
+                    <field name="picking_type_id" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+
+
+  </data>
+</odoo>

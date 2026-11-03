@@ -1,0 +1,232 @@
+﻿# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* mass_item_selection
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0-20200225\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-10-17 03:06+0000\n"
+"PO-Revision-Date: 2020-10-17 03:06+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: mass_item_selection
+#: model:ir.model,name:mass_item_selection.model_mass_items
+#: model:ir.model,name:mass_item_selection.model_mass_items_quantities
+msgid "Add Items"
+msgstr "اضافة الاصناف"
+
+#. module: mass_item_selection
+#: model_terms:ir.ui.view,arch_db:mass_item_selection.view_purchase_order_form
+#: model_terms:ir.ui.view,arch_db:mass_item_selection.view_sale_order_form
+#: model_terms:ir.ui.view,arch_db:mass_item_selection.view_stock_inventory_form
+#: model_terms:ir.ui.view,arch_db:mass_item_selection.view_stock_picking_form
+msgid "Add items"
+msgstr "اضافة الاصناف"
+
+#. module: mass_item_selection
+#: model_terms:ir.ui.view,arch_db:mass_item_selection.view_mass_items_quantites
+msgid "Add products"
+msgstr "اضافة الاصناف"
+
+#. module: mass_item_selection
+#: model_terms:ir.ui.view,arch_db:mass_item_selection.view_mass_items_quantites
+msgid "Adjust Quantitie"
+msgstr "تعديل الكميات"
+
+#. module: mass_item_selection
+#: model_terms:ir.ui.view,arch_db:mass_item_selection.view_mass_items
+msgid "Adjust Quantities"
+msgstr "تعديل الكميات"
+
+#. module: mass_item_selection
+#: code:addons/mass_item_selection/wizard/mass_items.py:37
+#, python-format
+msgid "Adjust Quantity"
+msgstr "تعديل الكميات"
+
+#. module: mass_item_selection
+#: model_terms:ir.ui.view,arch_db:mass_item_selection.view_mass_items
+#: model_terms:ir.ui.view,arch_db:mass_item_selection.view_mass_items_quantites
+msgid "Cancel"
+msgstr "إلغاء"
+
+#. module: mass_item_selection
+#: code:addons/mass_item_selection/wizard/mass_items_quantities.py:179
+#: model_terms:ir.ui.view,arch_db:mass_item_selection.view_mass_items_confirm
+#, python-format
+msgid "Confirm"
+msgstr "تأكيد"
+
+#. module: mass_item_selection
+#: model:ir.model,name:mass_item_selection.model_mass_items_confirm
+msgid "Confirm mass items"
+msgstr "تاكيد اختيار الاصناف"
+
+#. module: mass_item_selection
+#: model:ir.model.fields,field_description:mass_item_selection.field_mass_items__create_uid
+#: model:ir.model.fields,field_description:mass_item_selection.field_mass_items_confirm__create_uid
+#: model:ir.model.fields,field_description:mass_item_selection.field_mass_items_line__create_uid
+#: model:ir.model.fields,field_description:mass_item_selection.field_mass_items_quantities__create_uid
+msgid "Created by"
+msgstr "أنشئ بواسطة"
+
+#. module: mass_item_selection
+#: model:ir.model.fields,field_description:mass_item_selection.field_mass_items__create_date
+#: model:ir.model.fields,field_description:mass_item_selection.field_mass_items_confirm__create_date
+#: model:ir.model.fields,field_description:mass_item_selection.field_mass_items_line__create_date
+#: model:ir.model.fields,field_description:mass_item_selection.field_mass_items_quantities__create_date
+msgid "Created on"
+msgstr "أنشئ في"
+
+#. module: mass_item_selection
+#: model:ir.model.fields,field_description:mass_item_selection.field_mass_items__display_name
+#: model:ir.model.fields,field_description:mass_item_selection.field_mass_items_confirm__display_name
+#: model:ir.model.fields,field_description:mass_item_selection.field_mass_items_line__display_name
+#: model:ir.model.fields,field_description:mass_item_selection.field_mass_items_quantities__display_name
+msgid "Display Name"
+msgstr "الاسم المعروض"
+
+#. module: mass_item_selection
+#: model_terms:ir.ui.view,arch_db:mass_item_selection.view_mass_items_confirm
+msgid "Do you want to add it/them as the new line(s)?"
+msgstr ""
+
+#. module: mass_item_selection
+#: model:ir.model.fields,field_description:mass_item_selection.field_mass_items__id
+#: model:ir.model.fields,field_description:mass_item_selection.field_mass_items_confirm__id
+#: model:ir.model.fields,field_description:mass_item_selection.field_mass_items_line__id
+#: model:ir.model.fields,field_description:mass_item_selection.field_mass_items_quantities__id
+msgid "ID"
+msgstr "المعرف"
+
+#. module: mass_item_selection
+#: model:ir.model.fields,field_description:mass_item_selection.field_mass_items_line__categ
+msgid "Internal Category"
+msgstr "التصنيف الداخلى"
+
+#. module: mass_item_selection
+#: model:ir.model.fields,field_description:mass_item_selection.field_mass_items_line__default_code
+msgid "Internal Reference"
+msgstr "مرجع داخلي"
+
+#. module: mass_item_selection
+#: model:ir.model,name:mass_item_selection.model_mass_items_line
+msgid "Item Line"
+msgstr "سطر الصنف"
+
+#. module: mass_item_selection
+#: model:ir.model.fields,field_description:mass_item_selection.field_mass_items_quantities__item_lines
+msgid "Item Lines"
+msgstr "اسطر الصنف"
+
+#. module: mass_item_selection
+#: model:ir.actions.act_window,name:mass_item_selection.action_mass_items
+msgid "Items"
+msgstr "الاصناف"
+
+#. module: mass_item_selection
+#: model:ir.model.fields,field_description:mass_item_selection.field_mass_items____last_update
+#: model:ir.model.fields,field_description:mass_item_selection.field_mass_items_confirm____last_update
+#: model:ir.model.fields,field_description:mass_item_selection.field_mass_items_line____last_update
+#: model:ir.model.fields,field_description:mass_item_selection.field_mass_items_quantities____last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+
+#. module: mass_item_selection
+#: model:ir.model.fields,field_description:mass_item_selection.field_mass_items__write_uid
+#: model:ir.model.fields,field_description:mass_item_selection.field_mass_items_confirm__write_uid
+#: model:ir.model.fields,field_description:mass_item_selection.field_mass_items_line__write_uid
+#: model:ir.model.fields,field_description:mass_item_selection.field_mass_items_quantities__write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: mass_item_selection
+#: model:ir.model.fields,field_description:mass_item_selection.field_mass_items__write_date
+#: model:ir.model.fields,field_description:mass_item_selection.field_mass_items_confirm__write_date
+#: model:ir.model.fields,field_description:mass_item_selection.field_mass_items_line__write_date
+#: model:ir.model.fields,field_description:mass_item_selection.field_mass_items_quantities__write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث في"
+
+#. module: mass_item_selection
+#: model:ir.model.fields,field_description:mass_item_selection.field_mass_items_confirm__message
+msgid "Message"
+msgstr "الرسالة"
+
+#. module: mass_item_selection
+#: model:ir.model.fields,field_description:mass_item_selection.field_mass_items_line__name
+#: model:ir.model.fields,field_description:mass_item_selection.field_mass_items_line__product
+msgid "Name"
+msgstr "الاسم"
+
+#. module: mass_item_selection
+#: model_terms:ir.ui.view,arch_db:mass_item_selection.view_mass_items_confirm
+msgid "No"
+msgstr ""
+
+#. module: mass_item_selection
+#: model_terms:ir.ui.view,arch_db:mass_item_selection.view_mass_items
+msgid "Order Items"
+msgstr "اصناف الامر"
+
+#. module: mass_item_selection
+#: model:ir.model.fields,field_description:mass_item_selection.field_mass_items__product_ids
+msgid "Product"
+msgstr "المنتج"
+
+#. module: mass_item_selection
+#: model_terms:ir.ui.view,arch_db:mass_item_selection.view_mass_items
+msgid "Products"
+msgstr "المنتجات"
+
+#. module: mass_item_selection
+#: model:ir.model.fields,field_description:mass_item_selection.field_mass_items_line__quantity
+msgid "Quantity"
+msgstr "الكمية"
+
+#. module: mass_item_selection
+#: model_terms:ir.ui.view,arch_db:mass_item_selection.view_mass_items_confirm
+msgid "The below product(s) is/are already in list."
+msgstr ""
+
+#. module: mass_item_selection
+#: code:addons/mass_item_selection/wizard/mass_items_confirm.py:92
+#: code:addons/mass_item_selection/wizard/mass_items_quantities.py:130
+#, python-format
+msgid "The model:%s\n"
+"                        is not supported for massing adding lines!"
+msgstr ""
+
+#. module: mass_item_selection
+#: code:addons/mass_item_selection/wizard/mass_items_confirm.py:32
+#: code:addons/mass_item_selection/wizard/mass_items_quantities.py:76
+#, python-format
+msgid "The model:%s\n"
+"                    is not supported for massing adding lines!"
+msgstr ""
+
+#. module: mass_item_selection
+#: model_terms:ir.ui.view,arch_db:mass_item_selection.view_purchase_order_quantity
+#: model_terms:ir.ui.view,arch_db:mass_item_selection.view_sale_order_quantity
+#: model_terms:ir.ui.view,arch_db:mass_item_selection.view_stock_picking_quantity
+msgid "Total"
+msgstr "الإجمالي"
+
+#. module: mass_item_selection
+#: model_terms:ir.ui.view,arch_db:mass_item_selection.view_mass_items_confirm
+msgid "Yes"
+msgstr ""
+
+#. module: mass_item_selection
+#: model_terms:ir.ui.view,arch_db:mass_item_selection.view_mass_items
+#: model_terms:ir.ui.view,arch_db:mass_item_selection.view_mass_items_confirm
+#: model_terms:ir.ui.view,arch_db:mass_item_selection.view_mass_items_quantites
+msgid "or"
+msgstr "أو"
+

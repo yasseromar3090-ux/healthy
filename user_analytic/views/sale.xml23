@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+        <template id="report_sales_order_template">
+    <t t-call="web.html_container">
+        <t t-call="web.external_layout">
+            <div class="page" dir="rtl" style="font-family: 'Cairo', sans-serif;">
+                <!-- Header Section -->
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <h2 style="font-size: 24px; font-weight: bold; color: #333; text-decoration: underline;">
+                        إذن صرف بضاعة
+                    </h2>
+                </div>
+
+                <!-- Details Section -->
+                <div class="row" style="margin-bottom: 15px;">
+                    <div class="col-6 text-right">
+                        <strong style="font-size: 16px;">اسم المندوب:</strong>
+                        <span t-esc="user_id" style="font-size: 16px; color: #555;"/>
+                    </div>
+                    <div class="col-6 text-right">
+                        <strong style="font-size: 16px;">اليوم:</strong>
+                        <span t-esc="date_order" style="font-size: 16px; color: #555;"/>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-bottom: 15px;">
+                    <div class="col-12 text-right">
+                        <strong style="font-size: 16px;">التاريخ:</strong>
+                        <span t-esc="date_order2" style="font-size: 16px; color: #555;"/>
+                    </div>
+                </div>
+
+                <!-- Table Section -->
+                <table class="table table-bordered" style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+                    <thead>
+                        <tr style="background-color: #f8f9fa; border: 1px solid #ddd;">
+                            <th style="width: 10%; text-align: center; padding: 8px;">م</th>
+                            <th style="width: 60%; text-align: center; padding: 8px;">الصنف</th>
+                            <th style="width: 30%; text-align: center; padding: 8px;">الكمية</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-set="iindex" t-value="1"/>
+                        <tr t-foreach="product_quantities" t-as="product" style="border-bottom: 1px solid #ddd;">
+                            <td style="text-align: center; padding: 8px;">
+                                <t t-esc="iindex"/>
+                                <t t-set="iindex" t-value="iindex+1"/>
+                            </td>
+                            <td style="text-align: right; padding: 8px;">
+                                <t t-esc="product['product_id']"/>
+                            </td>
+                            <td style="text-align: center; padding: 8px;">
+                                <t t-esc="product['quantity']"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Total Section -->
+                <div class="row" style="margin-top: 20px;">
+                    <div class="col-12 text-right">
+                        <strong style="font-size: 18px;">الإجمــالي:</strong>
+                        <span t-esc="total" style="font-size: 18px; font-weight: bold; color: #d9534f;"/>
+                    </div>
+                </div>
+
+            </div>
+        </t>
+    </t>
+</template>
+        <template id="report_sales_order_template2">
+    <t t-call="web.html_container">
+        <t t-call="web.external_layout">
+            <div class="page" dir="rtl" style="font-family: 'Cairo', sans-serif;">
+
+                <!-- Header Section -->
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <h2 style="font-size: 24px; font-weight: bold; color: #333; text-decoration: underline;">
+                     إذن مرتجع
+                    </h2>
+                </div>
+
+                <!-- Details Section -->
+                <div class="row" style="margin-bottom: 15px;">
+                    <div class="col-6 text-right">
+                        <strong style="font-size: 16px;">اسم المندوب:</strong>
+                        <span t-esc="user_id" style="font-size: 16px; color: #555;"/>
+                    </div>
+                    <div class="col-6 text-right">
+                        <strong style="font-size: 16px;">اليوم:</strong>
+                        <span t-esc="date_order" style="font-size: 16px; color: #555;"/>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-bottom: 15px;">
+                    <div class="col-12 text-right">
+                        <strong style="font-size: 16px;">التاريخ:</strong>
+                        <span t-esc="date_order2" style="font-size: 16px; color: #555;"/>
+                    </div>
+                </div>
+
+                <!-- Table Section -->
+                <table class="table table-bordered" style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+                    <thead>
+                        <tr style="background-color: #f8f9fa; border: 1px solid #ddd;">
+                            <th style="width: 10%; text-align: center; padding: 8px;">م</th>
+                            <th style="width: 60%; text-align: center; padding: 8px;">الصنف</th>
+                            <th style="width: 30%; text-align: center; padding: 8px;">الكمية</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-set="iindex" t-value="1"/>
+                        <tr t-foreach="product_quantities" t-as="product" style="border-bottom: 1px solid #ddd;">
+                            <td style="text-align: center; padding: 8px;">
+                                <t t-esc="iindex"/>
+                                <t t-set="iindex" t-value="iindex+1"/>
+                            </td>
+                            <td style="text-align: right; padding: 8px;">
+                                <t t-esc="product['product_id']"/>
+                            </td>
+                            <td style="text-align: center; padding: 8px;">
+                                <t t-esc="product['quantity']"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Total Section -->
+                <div class="row" style="margin-top: 20px;">
+                    <div class="col-12 text-right">
+                        <strong style="font-size: 18px;">الإجمــالي:</strong>
+                        <span t-esc="total" style="font-size: 18px; font-weight: bold; color: #d9534f;"/>
+                    </div>
+                </div>
+
+            </div>
+        </t>
+    </t>
+</template>
+        <template id="report_stock_order_template">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page" dir="rtl" style="font-family: 'Cairo', sans-serif;">
+
+                        <!-- Header Section -->
+                        <div style="text-align: center; margin-bottom: 20px;">
+                            <h2 style="font-size: 24px; font-weight: bold; color: #333; text-decoration: underline;">
+                                إذن صرف بضاعة
+                            </h2>
+                        </div>
+
+                        <!-- Details Section -->
+                        <div class="row" style="margin-bottom: 15px; font-size: 16px;">
+                            <div class="col-6 text-right">
+                                <strong>اسم المندوب:</strong>
+                                <span t-esc="user_id" style="color: #555;"/>
+                            </div>
+                            <div class="col-6 text-right">
+                                <strong>اليوم:</strong>
+                                <span t-esc="date_order" style="color: #555;"/>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-bottom: 15px; font-size: 16px;">
+                            <div class="col-12 text-right">
+                                <strong>التاريخ:</strong>
+                                <span t-esc="date_order2" style="color: #555;"/>
+                            </div>
+                        </div>
+
+                        <!-- Table Section -->
+                        <table class="table table-bordered" style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+                            <thead>
+                                <tr style="background-color: #f8f9fa; border: 1px solid #ddd;">
+                                    <th style="width: 10%; text-align: center; padding: 8px;">م</th>
+                                    <th style="width: 60%; text-align: center; padding: 8px;">الصنف</th>
+                                    <th style="width: 30%; text-align: center; padding: 8px;">الكمية</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="iindex" t-value="1"/>
+                                <tr t-foreach="product_quantities" t-as="product" style="border-bottom: 1px solid #ddd;">
+                                    <td style="text-align: center; padding: 8px;">
+                                        <t t-esc="iindex"/>
+                                        <t t-set="iindex" t-value="iindex+1"/>
+                                    </td>
+                                    <td style="text-align: right; padding: 8px;">
+                                        <t t-esc="product['product_id']"/>
+                                    </td>
+                                    <td style="text-align: center; padding: 8px;">
+                                        <t t-esc="product['quantity']"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <!-- Total Section -->
+                        <div class="row" style="margin-top: 20px;">
+                            <div class="col-12 text-right">
+                                <strong style="font-size: 18px;">الإجمــالي:</strong>
+                                <span t-esc="total" style="font-size: 18px; font-weight: bold; color: #d9534f;"/>
+                            </div>
+                        </div>
+
+                    </div>
+                </t>
+            </t>
+        </template>
+        <template id="report_stock_order_template2">
+    <t t-call="web.html_container">
+        <t t-call="web.external_layout">
+            <div class="page" dir="rtl" style="font-family: 'Cairo', sans-serif;">
+
+                <!-- Header Section -->
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <h2 style="font-size: 24px; font-weight: bold; color: #333; text-decoration: underline;">
+                        إذن مرتجع
+                    </h2>
+                </div>
+
+                <!-- Details Section -->
+                <div class="row" style="margin-bottom: 15px; font-size: 16px;">
+                    <div class="col-6 text-right">
+                        <strong>اسم المندوب:</strong>
+                        <span t-esc="user_id" style="color: #555;"/>
+                    </div>
+                    <div class="col-6 text-right">
+                        <strong>اليوم:</strong>
+                        <span t-esc="date_order" style="color: #555;"/>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-bottom: 15px; font-size: 16px;">
+                    <div class="col-12 text-right">
+                        <strong>التاريخ:</strong>
+                        <span t-esc="date_order2" style="color: #555;"/>
+                    </div>
+                </div>
+
+                <!-- Table Section -->
+                <table class="table table-bordered" style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+                    <thead>
+                        <tr style="background-color: #f8f9fa; border: 1px solid #ddd;">
+                            <th style="width: 10%; text-align: center; padding: 8px;">م</th>
+                            <th style="width: 60%; text-align: center; padding: 8px;">الصنف</th>
+                            <th style="width: 30%; text-align: center; padding: 8px;">الكمية</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-set="iindex" t-value="1"/>
+                        <tr t-foreach="product_quantities" t-as="product" style="border-bottom: 1px solid #ddd;">
+                            <td style="text-align: center; padding: 8px;">
+                                <t t-esc="iindex"/>
+                                <t t-set="iindex" t-value="iindex+1"/>
+                            </td>
+                            <td style="text-align: right; padding: 8px;">
+                                <t t-esc="product['product_id']"/>
+                            </td>
+                            <td style="text-align: center; padding: 8px;">
+                                <t t-esc="product['quantity']"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Total Section -->
+                <div class="row" style="margin-top: 20px;">
+                    <div class="col-12 text-right">
+                        <strong style="font-size: 18px;">الإجمــالي:</strong>
+                        <span t-esc="total" style="font-size: 18px; font-weight: bold; color: #d9534f;"/>
+                    </div>
+                </div>
+
+            </div>
+        </t>
+    </t>
+</template>
+
+
+        <report
+                id="action_report_sales_order"
+                model="sale.order"
+                string="إذن صرف بضاعة"
+                report_type="qweb-pdf"
+                name="user_analytic.report_sales_order_template"
+                file="user_analytic.report_sales_order_template"
+        />
+        <report
+                id="action_report_sales_order2"
+                model="sale.order"
+                string="إذن مرتجع"
+                report_type="qweb-pdf"
+                name="user_analytic.report_sales_order_template2"
+                file="user_analytic.report_sales_order_template2"
+        />
+        <report
+                id="action_report_stock_order"
+                model="stock.picking"
+                string="إذن صرف بضاعة"
+                report_type="qweb-pdf"
+                name="user_analytic.report_stock_order_template"
+                file="user_analytic.report_stock_order_template"
+        />
+        <report
+                id="action_report_stock_order2"
+                model="stock.picking"
+                string="إذن مرتجع"
+                report_type="qweb-pdf"
+                name="user_analytic.report_stock_order_template2"
+                file="user_analytic.report_stock_order_template2"
+        />
+
+
+    </data>
+</odoo>
+
+

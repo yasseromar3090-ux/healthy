@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="hide_cost_price_custom" model="res.groups">
+            <field name="name">Show Cost Price</field>
+        </record>
+
+    </data>
+</odoo>
