@@ -959,8 +959,8 @@ class DbBackupConfigure(models.Model):
                                 odoo.service.db.dump_db(rec.db_name, tmp,
                                                         rec.backup_format)
                             backup_file_path = temp.name
-                            remote_file_path = f"/{folder_name}/{rec.db_name}_" \
-                                               f"{backup_time}.{rec.backup_format}"
+                            remote_file_path = "/%s/%s_%s.%s" % (
+                                folder_name, rec.db_name, backup_time, rec.backup_format)
                             nc.put_file(remote_file_path, backup_file_path)
                         else:
                             # Dump the database to a temporary file
@@ -970,8 +970,8 @@ class DbBackupConfigure(models.Model):
                                 odoo.service.db.dump_db(rec.db_name, tmp,
                                                         rec.backup_format)
                             backup_file_path = temp.name
-                            remote_file_path = f"/{folder_name}/{rec.db_name}_" \
-                                               f"{backup_time}.{rec.backup_format}"
+                            remote_file_path = "/%s/%s_%s.%s" % (
+                                folder_name, rec.db_name, backup_time, rec.backup_format)
                             nc.put_file(remote_file_path, backup_file_path)
                 except Exception:
                     raise ValidationError('Please check connection')
@@ -1030,8 +1030,8 @@ class DbBackupConfigure(models.Model):
                                 odoo.service.db.dump_db(rec.db_name, tmp,
                                                         rec.backup_format)
                             backup_file_path = temp.name
-                            remote_file_path = f"{rec.aws_folder_name}/{rec.db_name}_" \
-                                               f"{backup_time}.{rec.backup_format}"
+                            remote_file_path = "%s/%s_%s.%s" % (
+                                rec.aws_folder_name, rec.db_name, backup_time, rec.backup_format)
                             s3.Object(rec.bucket_file_name,
                                       remote_file_path).upload_file(
                                 backup_file_path)
