@@ -7,7 +7,7 @@
         "ht_custom",
     ],
     "data": [
-        "views/user.xml",
+        # "views/user.xml",
         "views/sale.xml",
     ],
 }
